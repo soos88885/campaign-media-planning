@@ -1,9 +1,13 @@
-﻿namespace campaign_media_planning;
+﻿using CampaignMediaPlanning.Utils;
 
-class Program
+namespace CampaignMediaPlanning
 {
-    static void Main(string[] args)
+    class Program
     {
-        
+        static void Main(string[] args)
+        {
+            // Calls the Run method to execute the campaign media planning workflow.
+            CampaignManager.Run();
+        }
     }
 }
