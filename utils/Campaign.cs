@@ -42,6 +42,26 @@ namespace CampaignMediaPlanning.Utils
         /// <param name="fixedAgencyCosts">The fixed costs for agency hours.</param>
         public Campaign(double[] adBudgets, double agencyFeePercentage, double thirdPartyToolFeesPercentage, double fixedAgencyCosts)
         {
+            if (adBudgets == null || adBudgets.Length == 0)
+            {
+                throw new ArgumentException("Ad budgets must be provided.");
+            }
+
+            if (agencyFeePercentage < 0 || agencyFeePercentage > 1)
+            {
+                throw new ArgumentException("Agency fee percentage must be between 0 and 1.");
+            }
+
+            if (thirdPartyToolFeesPercentage < 0 || thirdPartyToolFeesPercentage > 1)
+            {
+                throw new ArgumentException("Third-party tool fee percentage must be between 0 and 1.");
+            }
+
+            if (fixedAgencyCosts < 0)
+            {
+                throw new ArgumentException("Fixed agency costs must be a non-negative number.");
+            }
+
             this.adBudgets = adBudgets;
             this.agencyFeePercentage = agencyFeePercentage;
             this.thirdPartyToolFeesPercentage = thirdPartyToolFeesPercentage;
