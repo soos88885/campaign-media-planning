@@ -68,10 +68,10 @@ namespace CampaignMediaPlanning.Tests
         public void ThrowErrorWhenNullAdBudgets()
         {
             // Arrange
-            double[] adBudgets = null;
+            double[]? adBudgets = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => new Campaign(adBudgets, 0.1, 0.05, 1000));
+            _ = Assert.Throws<ArgumentException>(() => new Campaign(adBudgets, 0.1, 0.05, 1000));
         }
 
         // Test Case 6: Invalid Inputs - Campaign throws an exception when CalculateTotalBudget is called with invalid inputs (Negative adBudget)

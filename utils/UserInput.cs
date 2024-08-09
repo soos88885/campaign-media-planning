@@ -168,7 +168,9 @@ namespace CampaignMediaPlanning.Utils
                 {
                     if (i == 2)
                     {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Note: Ad3 budget will be calculated by GoalSeek.");
+                        Console.ResetColor();
                     }
 
                     Console.WriteLine($"Enter the budget for ad {i + 1} (positive number):");
