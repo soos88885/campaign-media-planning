@@ -49,16 +49,44 @@ namespace CampaignMediaPlanning.Utils
         /// <summary>
         /// Initializes a new instance of the GoalSeek class with the specified parameters.
         /// </summary>
-        /// <param name="tolerance">The tolerance within which the calculated budget must fall to be considered a match.</param>
-        /// <param name="initialStep">The initial step size used to adjust the budget for ad 3.</param>
-        /// <param name="maxIterations">The maximum number of iterations allowed for the goal-seeking algorithm.</param>
+        /// <param name="tolerance">The tolerance within which the calculated budget must fall to be considered a match. Must be a non-negative number.</param>
+        /// <param name="initialStep">The initial step size used to adjust the budget for ad 3. Must be a positive number.</param>
+        /// <param name="maxIterations">The maximum number of iterations allowed for the goal-seeking algorithm. Must be a positive integer.</param>
         /// <param name="campaignTotalBudget">The target total campaign budget (Z).</param>
         /// <param name="adBudgets">An array of ad budgets for the campaign. Ad 3 is not included, therefore, the third element represents the budget for ad 4.</param>
         /// <param name="agencyFeePercentage">The percentage of the total ad spend that goes to the agency as a fee (Y1).</param>
         /// <param name="thirdPartyToolFeesPercentage">The percentage of the total relevant ad spend that goes to third-party tools as a fee (Y2).</param>
         /// <param name="fixedAgencyCosts">The fixed costs associated with the agency hours required for the campaign.</param>
+        /// <exception cref="ArgumentException">
+        /// Thrown when any of the following conditions are met:
+        /// <list type="bullet">
+        /// <item>
+        /// <description><paramref name="tolerance"/> is less than 0.</description>
+        /// </item>
+        /// <item>
+        /// <description><paramref name="initialStep"/> is less than or equal to 0.</description>
+        /// </item>
+        /// <item>
+        /// <description><paramref name="maxIterations"/> is less than or equal to 0.</description>
+        /// </item>
+        /// </list>
+        /// </exception>
         public GoalSeek(double tolerance, double initialStep, int maxIterations, double campaignTotalBudget, double[] adBudgets, double agencyFeePercentage, double thirdPartyToolFeesPercentage, double fixedAgencyCosts)
         {
+            if (tolerance < 0)
+            {
+                throw new ArgumentException("Tolerance must be a non-negative number.", nameof(tolerance));
+            }
+
+            if (initialStep <= 0) // Initial step should also be positive to ensure progress in the goal-seeking algorithm
+            {
+                throw new ArgumentException("Initial step must be a positive number.", nameof(initialStep));
+            }
+
+            if (maxIterations <= 0) // The number of iterations should be positive
+            {
+                throw new ArgumentException("Max iterations must be a positive integer.", nameof(maxIterations));
+            }
             this.tolerance = tolerance;
             this.initialStep = initialStep;
             this.maxIterations = maxIterations;
@@ -91,7 +119,7 @@ namespace CampaignMediaPlanning.Utils
                 Console.ResetColor();
 
                 // Create a new Campaign object with the current budgetAd3 value
-                Campaign campaign = new Campaign(new double[] { adBudgets[0], adBudgets[1], budgetAd3, adBudgets[2] }, agencyFeePercentage, thirdPartyToolFeesPercentage, fixedAgencyCosts);
+                Campaign campaign = new(new double[] { adBudgets[0], adBudgets[1], budgetAd3, adBudgets[2] }, agencyFeePercentage, thirdPartyToolFeesPercentage, fixedAgencyCosts);
                 double calculatedBudget = campaign.CalculateTotalBudget(); // Calculate the total campaign budget
 
                 // Check if the calculated budget is within the tolerance of the target budget

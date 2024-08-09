@@ -42,7 +42,7 @@ namespace CampaignMediaPlanning.Utils
         /// <param name="fixedAgencyCosts">The fixed costs for agency hours.</param>
         public Campaign(double[] adBudgets, double agencyFeePercentage, double thirdPartyToolFeesPercentage, double fixedAgencyCosts)
         {
-            if (adBudgets == null || adBudgets.Length == 0)
+            if (adBudgets == null || adBudgets.Length == 0 || adBudgets.Any(budget => budget < 0))
             {
                 throw new ArgumentException("Ad budgets must be provided.");
             }
