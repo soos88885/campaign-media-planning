@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "campaign-media-planning", "campaign-media-planning.csproj", "{575C8C07-390A-4839-B371-C21911F7F621}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "campaign-media-planning", "campaign-media-planning.csproj", "{264D1AE2-3809-4A69-9394-B7C966CFA765}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "campaign-media-planning-xunit", "campaign-media-planning-xunit\campaign-media-planning-xunit.csproj", "{810F03C4-DFA7-4FCC-BBF4-5ECF1E4321F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{575C8C07-390A-4839-B371-C21911F7F621}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{575C8C07-390A-4839-B371-C21911F7F621}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{575C8C07-390A-4839-B371-C21911F7F621}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{575C8C07-390A-4839-B371-C21911F7F621}.Release|Any CPU.Build.0 = Release|Any CPU
+		{264D1AE2-3809-4A69-9394-B7C966CFA765}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{264D1AE2-3809-4A69-9394-B7C966CFA765}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{264D1AE2-3809-4A69-9394-B7C966CFA765}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{264D1AE2-3809-4A69-9394-B7C966CFA765}.Release|Any CPU.Build.0 = Release|Any CPU
+		{810F03C4-DFA7-4FCC-BBF4-5ECF1E4321F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{810F03C4-DFA7-4FCC-BBF4-5ECF1E4321F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{810F03C4-DFA7-4FCC-BBF4-5ECF1E4321F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{810F03C4-DFA7-4FCC-BBF4-5ECF1E4321F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
